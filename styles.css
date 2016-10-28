@@ -1,0 +1,39 @@
+#calculator2{
+  margin-top: 40px;
+}
+
+
+.calculator{
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+}
+
+.output{
+  height: 26px;
+  width: 80%;
+  margin-bottom: 10px;
+  box-shadow: inset 0px 1px 3px #000;
+  line-height: 26px;
+  padding-left: 5px;
+}
+
+.numbers{
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+}
+
+.numbers button{
+  width: 30%;
+  margin: 0 5px 5px 0;
+}
+
+.operations{
+  display: flex;
+  flex-direction: column;
+}
+
+.operations button{
+      margin-bottom: 5px;
+}
