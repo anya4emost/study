@@ -1,29 +1,68 @@
-(function(){
-  var todo = new Object();
-  todo.list = new Array();
-  var list = document.getElementById("list");
-  todo.add = function(){
-  var taskEl = document.querySelector('#task');
-    if (taskEl.value !== ""){
-      todo.list.push(taskEl.value);
+(function() {
+    var list = document.getElementById("list");
+    var taskEl = document.querySelector('#task');
+
+    function setTask(text) {
+        var div = document.createElement("div"),
+            span = document.createElement("span"),
+            input = document.createElement('input'),
+            buttonRemove = document.createElement("button"),
+            buttonEdit = document.createElement("button"),
+            buttonSave = document.createElement("button");
+
+        span.innerText = text;
+
+        buttonRemove.innerText = "remove";
+        buttonEdit.innerText = "edit";
+        buttonSave.innerText = "save";
+        buttonSave.classList.add('hide');
+        input.classList.add('hide');
+
+        div.appendChild(span);
+        div.appendChild(buttonRemove);
+        div.appendChild(buttonEdit);
+        div.appendChild(buttonSave);
+        div.insertBefore(input, div.firstChild);
+
+        return {
+            div: div,
+            buttonRemove: buttonRemove,
+            buttonEdit: buttonEdit,
+            buttonSave: buttonSave,
+            input: input,
+            span: span,
+        };
     }
-    var div = document.createElement("div");
-    var text = document.createTextNode(taskEl.value);
-    var buttonRemove = document.createElement("button");
-    buttonRemove.innerText = "remove";
-    list.appendChild(div);
-    div.appendChild(text);
-    div.appendChild(buttonRemove);
 
-    buttonRemove.addEventListener("click",function(){
-      div.remove();  
-    });
+    function add() {
 
-    taskEl.value = "";
-  };
-  var add = document.getElementById('add');
-  add.addEventListener("click", todo.add);
+        if (taskEl.value == "") {
+            return;
+        }
 
-  document.getElementById("list").innerHTML = todo.list;
+        var elements = setTask(taskEl.value);
+        list.appendChild(elements.div);
 
+        elements.buttonRemove.addEventListener("click", function() {
+            elements.div.remove();
+        });
+
+        elements.buttonEdit.addEventListener("click", function Edit() {
+            elements.input.value = elements.span.innerText;
+            elements.buttonSave.classList.remove('hide');
+            elements.buttonEdit.classList.add('hide');
+            elements.input.classList.remove('hide');
+            elements.span.classList.add('hide');
+        });
+        elements.buttonSave.addEventListener("click", function() {
+            elements.span.innerText = elements.input.value;
+            elements.span.classList.remove('hide');
+            elements.buttonSave.classList.add('hide');
+            elements.buttonEdit.classList.remove('hide');
+            elements.input.classList.add('hide');
+        });
+        taskEl.value = "";
+    };
+    var buttonAdd = document.getElementById('add');
+    buttonAdd.addEventListener("click", add);
 })();
