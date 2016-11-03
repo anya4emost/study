@@ -1,6 +1,7 @@
 (function() {
     var list = document.getElementById("list");
     var taskEl = document.querySelector('#task');
+    document.getElementById("task").focus();
 
     function setTask(text) {
         var div = document.createElement("div"),
@@ -12,9 +13,9 @@
 
         span.innerText = text;
 
-        buttonRemove.innerText = "remove";
-        buttonEdit.innerText = "edit";
-        buttonSave.innerText = "save";
+        buttonRemove.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+        buttonEdit.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
+        buttonSave.innerHTML = '<i class="fa fa-floppy-o" aria-hidden="true"></i>';
         buttonSave.classList.add('hide');
         input.classList.add('hide');
 
@@ -65,4 +66,13 @@
     };
     var buttonAdd = document.getElementById('add');
     buttonAdd.addEventListener("click", add);
+
+    taskEl.addEventListener('keyup',  function() {
+        if (event.keyCode === 13) {
+            add();
+        }
+        if (event.keyCode === 27) {
+            taskEl.value = "";
+        }
+    });
 })();

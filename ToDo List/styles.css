@@ -1,8 +1,19 @@
 .todo{
   display: flex;
+  flex-flow: column wrap;
+}
+.toDo_head{
+  display: flex;
+}
+.element>div{
+  justify-content: flex-end;
+display: flex;
+}
+span{
+  flex-grow: 1;
 }
 input{
-  width: 400px;
+  flex-grow: 1;
   margin-top: 10px;
 }
 button{
