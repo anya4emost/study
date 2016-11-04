@@ -1,0 +1,47 @@
+.field{
+  border:1px solid red;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+button{
+  display: inline-block;;
+  width:80px;
+  height:50px;
+  margin:auto;
+}
+.green{
+  background-color: green;
+}
+.red{
+  background-color: red;
+}
+.blue{
+  background-color: blue;
+}
+.purple{
+  background-color: purple;
+}
+.cyan{
+  background-color: cyan;
+}
+.yellow{
+  background-color: yellow;
+}
+.field>div{
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom:10px;
+
+}
+#container{
+  display:flex;
+  flex-wrap: wrap;
+}
+#result{
+  display:flex;
+  flex-wrap: wrap;
+  margin:10px;
+}
