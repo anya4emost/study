@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+}
+
+#gamburger {
+    cursor: pointer;
+}
+
+a {
+    padding: 30px;
+    border: 1px solid grey;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+
+/* Small screens */
+
+@media (max-width: 900px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        transform: translateX(-100%);
+        width: 262px;
+        transition: transform .5s ease-in-out;
+    }
+    nav.show {
+        transform: translateX(0);
+    }
+    nav.show>a {
+        animation: myAnimation;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+    a {
+        width: 200px;
+    }
+    .hide {
+        display: flex;
+    }
+}
+
+@keyframes myAnimation {
+    0% {
+        opacity: 0;
+        background-color: blue;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+        background-color: green;
+    }
+}
